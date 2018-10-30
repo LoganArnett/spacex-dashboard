@@ -1,0 +1,18 @@
+@import '~bulma/css/bulma.min.css';
+
+@font-face {
+  font-family: "Geomanist";
+  src: url("../assets/fonts/geomanist-regular-webfont.woff2") format("woff2"),
+       url("../assets/fonts/geomanist-regular-webfont.woff") format("woff");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Geomanist', 'Roboto', sans-serif,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: url("../assets/images/background.jpg"), no-repeat;
+  background-size: cover;
+}
