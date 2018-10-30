@@ -1,11 +1,48 @@
+@import '_variables';
+
 .table {
-  th {
-    text-align: center;
+  margin-bottom: 2%;
+  background-color: transparent;
+  border-spacing: 0 0.5rem;
+  border-collapse: separate;
+  thead {
+    tr {
+      background: linear-gradient($lightblue, #FFFFFF);
+    }
   }
-  td img {
-    width: 50%;
+  th {
+    border: none;
+  }
+  tr {
+    background-color: rgba(255,255,255,0.5);
+    td:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    td:last-child {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+  td {
+    vertical-align: middle;
+    border-color: transparent;
+    img {
+      width: 3rem;
+    }
+    &.details {
+      max-width: 280px;
+      span {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
   }
   .badge-icon {
-    text-align: center;
+    img {
+      width: 1.5rem;
+    }
   }
 }
