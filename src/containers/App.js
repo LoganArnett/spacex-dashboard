@@ -14,13 +14,18 @@ class App extends Component {
     axios.get('https://api.spacexdata.com/v2/launches')
     .then(({ data }) => this.setState({ articles: data }));
   }
+  refresh = () => {
+    this.setState({ articles: [] }, () => this.getArticles());
+  }
   render() {
     const { articles } = this.state;
     return (
       <section className="App">
         <Header title="SpaceX Launches" />
-        <TableControls />
-        <DataTable articles={articles} />
+        <section className="Main container">
+          <TableControls refresh={this.refresh} />
+          { articles.length ? <DataTable articles={articles} /> : <h2 className="loading">Loading...</h2>}
+        </section>
       </section>
     );
   }

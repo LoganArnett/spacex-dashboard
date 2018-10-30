@@ -1,12 +1,13 @@
 import React from 'react';
 import { format } from 'date-fns';
 import LinkIcon from '../assets/images/link.svg';
+import '../scss/DataTable.scss';
 
 class DataTable extends React.Component {
   render() {
     const { articles } = this.props;
     return (
-      <table className="table container">
+      <table className="table">
         <thead>
           <tr>
             <th className="has-text-centered">Badge</th>

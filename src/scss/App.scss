@@ -1,9 +1,15 @@
-@import 'DataTable';
-
 .App {
   text-align: center;
   h1 {
     color: #FFFFFF;
     font-size: 3rem;
+  }
+  h2 {
+    color: #FFFFFF;
+    font-size: 2rem;
+    margin: 5%;
+  }
+  .Main {
+    width: 80%;
   }
 }
