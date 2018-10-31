@@ -37,7 +37,7 @@ class App extends Component {
   filterArticles = (filters) => {
     console.log(filters)
     const { landed, reused, reddit } = filters;
-    const { filteredArticles, articles } = Object.assign({}, this.state);
+    const { articles } = Object.assign({}, this.state);
     var updatedArticles = [];
     if (landed) {
       updatedArticles = filter(articles, article => {

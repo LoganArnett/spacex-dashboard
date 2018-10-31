@@ -35,7 +35,7 @@ class DataTable extends React.Component {
               </td>
               <td>{article.flight_number}</td>
               <td className="badge-icon has-text-centered">
-                <a href={article.links.article_link} target="_blank">
+                <a href={article.links.article_link} target="_blank" rel="noopener noreferrer">
                   <img src={LinkIcon} alt="link"/>
                 </a>
               </td>
