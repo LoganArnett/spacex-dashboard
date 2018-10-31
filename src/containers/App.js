@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import shuffle from 'lodash/shuffle';
 import find from 'lodash/find';
@@ -6,7 +6,7 @@ import filter from 'lodash/filter';
 import { Header, DataTable, TableControls } from '../components'
 import '../scss/App.scss';
 
-class App extends Component {
+class App extends React.Component {
   state = {
     articles: [],
     filteredArticles: [],
@@ -19,40 +19,35 @@ class App extends Component {
   componentDidMount() {
     this.getArticles();
   }
-  getArticles = () => {
-    axios.get('https://api.spacexdata.com/v2/launches')
-    .then(({ data }) => {
-      const articles = shuffle(data);
-      this.setState({ articles, filteredArticles: articles })
-    });
+  getArticles = async () => {
+    const { data } = await axios.get('https://api.spacexdata.com/v2/launches');
+    const articles = shuffle(data);
+    this.setState({ articles, filteredArticles: this.filterArticles({ articles }) });
   }
   refresh = () => {
     this.setState({ articles: [], filteredArticles: [] }, () => this.getArticles());
   }
   filterBy = (name) => {
     const filters = Object.assign(this.state.filters, { [name]: !this.state.filters[name] });
-    const filteredArticles = this.filterArticles(filters);
-    return this.setState({ filters, filteredArticles });
+    return this.setState({ filters, filteredArticles: this.filterArticles({ filters }) });
   }
-  filterArticles = (filters) => {
-    console.log(filters)
-    const { landed, reused, reddit } = filters;
-    const { articles } = Object.assign({}, this.state);
+  filterArticles = (options) => {
+    const { landed, reused, reddit } = options.filters ? options.filters : this.state.filters;
+    const { articles } = options.articles ? options : Object.assign({}, this.state);
     var updatedArticles = [];
+
     if (landed) {
-      updatedArticles = filter(articles, article => {
-        return article.rocket.first_stage.cores[0].land_success;
-      });
+      updatedArticles = filter(articles, article => article.rocket.first_stage.cores[0].land_success);
     }
     if (reused) {
-      updatedArticles = filter(updatedArticles.length ? updatedArticles : articles, article => {
-        return article.rocket.first_stage.cores[0].reused;
-      });
+      updatedArticles = filter(updatedArticles.length ? updatedArticles : articles, article => (
+        article.rocket.first_stage.cores[0].reused
+      ));
     }
     if (reddit) {
-      updatedArticles = filter(updatedArticles.length ? updatedArticles : articles, article => {
-        return find(Object.keys(article.links), key => key.includes('reddit'));
-      });
+      updatedArticles = filter(updatedArticles.length ? updatedArticles : articles, article => (
+        find(Object.keys(article.links), key => key.includes('reddit')
+      )));
     }
     return updatedArticles.length ? updatedArticles : articles;
   }
