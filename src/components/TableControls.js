@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomCheckBox from './CustomCheckBox';
 import '../scss/TableControls.scss';
 
 class TableControls extends React.Component {
@@ -17,26 +18,9 @@ class TableControls extends React.Component {
           </button>
         </div>
         <div className="column is-one-half checkboxes">
-          <label className="checkbox">
-            <input type="checkbox" name="landed" onChange={this.handleChange} />
-            <span>
-              <i className="fa fa-square-o" />
-              { landed ? <i className="fa fa-check" /> : null }
-            </span>
-            LAND SUCCESS
-          </label>
-          <label className="checkbox">
-            <input type="checkbox" name="reused" onChange={this.handleChange} />
-            <i className="fa fa-square-o" />
-            { reused ? <i className="fa fa-check" /> : null }
-            REUSED
-          </label>
-          <label className="checkbox">
-            <input type="checkbox" name="reddit" onChange={this.handleChange} />
-            <i className="fa fa-square-o" />
-            { reddit ? <i className="fa fa-check" /> : null }
-            WITH REDDIT
-          </label>
+          <CustomCheckBox title="Land Success" onChange={this.handleChange} checked={landed} name="landed" />
+          <CustomCheckBox title="Reused" onChange={this.handleChange} checked={reused}  name="reused" />
+          <CustomCheckBox title="With Reddit" onChange={this.handleChange} checked={reddit} name="reddit" />
         </div>
       </section>
     );
