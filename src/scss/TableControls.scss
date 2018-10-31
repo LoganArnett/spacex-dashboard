@@ -1,0 +1,61 @@
+@import '_variables';
+
+.controls {
+  background: rgba(255,255,255,0.15);
+  color: #FFFFFF;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  min-height: 80px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-bottom: none;
+  &.columns {
+    margin: 0;
+    margin-bottom: -0.5rem;
+  }
+
+  .button {
+    border-radius: 50%;
+    background: transparent;
+    color: #FFFFFF;
+    &:focus, &:active {
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
+  }
+  .refresh {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .checkboxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 10%;
+    label.checkbox {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      &:hover {
+        color: #FFFFFF;
+      }
+    }
+    .fa {
+      margin-right: 0.5rem;
+      font-size: 1.5rem;
+      &.fa-check {
+        color: $brightblue;
+        position: absolute;
+        top: 0.2em;
+        left: 0.1em;
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+input[type=checkbox] {
+  display:none;
+}

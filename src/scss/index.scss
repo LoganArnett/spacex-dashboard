@@ -1,3 +1,4 @@
+@import '~font-awesome/css/font-awesome.min.css';
 @import '~bulma/css/bulma.min.css';
 
 @font-face {
@@ -7,6 +8,8 @@
 }
 
 body {
+  height: 100vh;
+  overflow-y: scroll;
   margin: 0;
   padding: 0;
   font-family: 'Geomanist', 'Roboto', sans-serif,
