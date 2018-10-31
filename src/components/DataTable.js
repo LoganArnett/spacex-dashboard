@@ -20,8 +20,8 @@ class DataTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {articles.map(article => (
-            <tr>
+          {articles.map((article, i) => (
+            <tr key={`row-${i}`}>
               <td className="has-text-centered">
                 <img src={article.links.mission_patch} alt="mission_patch"/>
               </td>
@@ -35,7 +35,7 @@ class DataTable extends React.Component {
               </td>
               <td>{article.flight_number}</td>
               <td className="badge-icon has-text-centered">
-                <a href={article.links.article_link}>
+                <a href={article.links.article_link} target="_blank">
                   <img src={LinkIcon} alt="link"/>
                 </a>
               </td>
